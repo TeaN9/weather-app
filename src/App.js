@@ -61,7 +61,7 @@ function App() {
           </form>
         </div>
         {loading ? (
-          <div>Loading...</div>
+          <div className="loading-message">Loading...</div>
         ) : (
           <>
             {errorMessage ? (

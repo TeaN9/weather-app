@@ -67,6 +67,10 @@
   filter: brightness(125%);
 }
 
+.loading-message {
+  text-align: center;
+}
+
 .display-info {
   max-width: 100%;
   text-align: center;
