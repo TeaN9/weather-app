@@ -68,7 +68,7 @@ function App() {
               <div style={{ color: "red" }}>{errorMessage}</div>
             ) : (
               <div className="display-info">{weatherInfo}</div>
-            )}{" "}
+            )}
           </>
         )}
       </div>
