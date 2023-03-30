@@ -68,7 +68,9 @@
 }
 
 .loading-message {
+  margin-top: 10px;
   text-align: center;
+  color: whitesmoke;
 }
 
 .display-info {
