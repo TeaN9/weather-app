@@ -8,7 +8,7 @@
 
 .background {
   height: 100vh;
-  font-family: "ubuntu", sans-serif;
+  font-family: "Jam Grotesque", sans-serif;
   margin-left: auto;
   margin-right: auto;
   background-image: url(./img/bg-image.png);
@@ -25,7 +25,7 @@
 }
 
 .input-wrapper {
-  margin-top: 100px;
+  margin-top: 80px;
   display: inline-block;
   position: relative;
   z-index: 2;
@@ -37,6 +37,8 @@
 
 .input-wrapper input {
   border: none;
+  text-align: center;
+  font-size: 16px;
 }
 
 .input-wrapper input:focus {
@@ -56,7 +58,7 @@
   background-color: #1f81f7;
   padding-top: 6px;
   padding-bottom: 6px;
-  padding-left: 30px;
+  padding-left: 20px;
   padding-right: 10px;
   cursor: pointer;
   color: white;
@@ -67,16 +69,69 @@
   filter: brightness(125%);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .loading-message {
   margin-top: 10px;
   text-align: center;
-  color: whitesmoke;
+  color: #d1d8e0;
+  font-size: 18px;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+.error-message {
+  margin-top: 10px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #eb2f06;
+  text-shadow: 1px 1px 1px rgba(245, 245, 245, 0.42);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  animation-name: fadeIn;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
 }
 
 .display-info {
   max-width: 100%;
   text-align: center;
-  margin-top: 50px;
-  color: white;
-  font-size: 20px;
+  margin-top: 30px;
+  color: #f1f2f6;
+  font-size: 24px;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+}
+
+.others-info {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  font-size: 18px;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.display-info h1 {
+  padding-top: 5px;
+}
+
+.display-info h3 {
+  text-transform: uppercase;
+  font-size: 22px;
+  padding-top: 10px;
 }

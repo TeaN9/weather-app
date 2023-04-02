@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const api = {
-  key: "a5526d01de436f1dbfc873848f2ee41c",
-  base: "https://api.openweathermap.org/data/2.5/",
+  key: process.env.REACT_APP_API_KEY,
+  base: process.env.REACT_APP_BASE_URL,
 };
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [searchCity, setSearchCity] = useState("");
-  const [weatherInfo, setWeatherInfo] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -23,9 +23,7 @@ function App() {
         const response = await fetch(url);
         const data = await response.json();
         if (response.ok) {
-          setWeatherInfo(
-            `${data.name}, ${data.sys.country}: ${data.weather[0].description}, ${data.main.temp}°C `
-          );
+          setWeatherInfo(data);
           setErrorMessage("");
         } else {
           setErrorMessage(data.message);
@@ -65,9 +63,44 @@ function App() {
         ) : (
           <>
             {errorMessage ? (
-              <div style={{ color: "red" }}>{errorMessage}</div>
+              <div className="error-message">{errorMessage}</div>
             ) : (
-              <div className="display-info">{weatherInfo}</div>
+              <div className="display-info">
+                <h2>
+                  {weatherInfo
+                    ? `${weatherInfo.name}, ${weatherInfo.sys.country}`
+                    : ``}
+                </h2>
+                <h1>{weatherInfo ? `${weatherInfo.main.temp}°C` : ``}</h1>
+                <h3>{weatherInfo?.weather[0].description}</h3>
+                <div className="others-info">
+                  <p>
+                    {weatherInfo
+                      ? `Feels like: ${weatherInfo.main.feels_like}°C`
+                      : ``}
+                  </p>
+                  <p>
+                    {weatherInfo
+                      ? `Wind: ${(weatherInfo.wind.speed * 3.6).toFixed(
+                          1
+                        )} km/h`
+                      : ``}
+                  </p>
+                  <p>
+                    {weatherInfo
+                      ? `Visibility: ${
+                          weatherInfo.visibility / 1000
+                        }                      
+                         km`
+                      : ``}
+                  </p>
+                  <p>
+                    {weatherInfo
+                      ? `Humidity: ${weatherInfo.main.humidity}%`
+                      : ``}
+                  </p>
+                </div>
+              </div>
             )}
           </>
         )}
